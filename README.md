@@ -3,7 +3,7 @@
 ## Local Setup
 
 1. Fork this repo and clone it in your system using the following command
-    `git clone https://github.com/AjayVijendran/SIH.git`
+    1. `git clone https://github.com/AjayVijendran/SIH.git`
 2. Run the following commands to install all the required dependencies
     1. `npm install`
     2. `npm run install-all`
