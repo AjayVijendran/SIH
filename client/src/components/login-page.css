@@ -1,0 +1,373 @@
+/* LoginPage.css */
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 130vh;
+  background-color: #f0ffff;
+}
+/*
+.login-container {
+  width: 80%; /* Adjust the percentage as needed 
+  max-width: 600px; /* Adjust the maximum width as needed */
+
+.LoginPage {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.login-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.login-container:hover {
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+}
+
+.logged-in {
+  padding: 20px;
+  background-color: #4caf50;
+  transition: background-color 0.3s ease-in-out;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.login-form {
+  padding: 20px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.input-field:focus {
+  border-color: #007bff;
+}
+
+.login-button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+.alt-login-options {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.alt-login-divider {
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid #ccc;
+  transition: margin 0.3s ease-in-out;
+}
+
+.alt-login-divider:hover {
+  margin-top: 25px;
+}
+
+.alt-login-options p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.alt-login-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.alt-login-button {
+  margin-top: 10px;
+  padding: 10px 20px 10px 1px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  width: 100%;
+  display: block;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  text-decoration: none;
+}
+
+.alt-login-button:hover {
+  transform: translateY(-3px);
+}
+
+/* Specific styles for individual login options */
+.alt-login-button.google {
+  background-color: #db4437;
+  color: #fff;
+}
+
+.alt-login-button.google:hover {
+  background-color: #c72d27;
+}
+
+.alt-login-button.facebook {
+  background-color: #1877f2;
+  color: #fff;
+}
+
+.alt-login-button.facebook:hover {
+  background-color: #1353b0;
+}
+
+.alt-login-button.apple {
+  background-color: #000;
+  color: #fff;
+}
+
+.alt-login-button.apple:hover {
+  background-color: #333;
+}
+
+.alt-login-button.mobile {
+  background-color: #34c759;
+  color: #fff;
+}
+
+.alt-login-button.mobile:hover {
+  background-color: #2faa51;
+}
+
+.toggle-mode-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: underline;
+  margin-top: 10px;
+  color: #007bff;
+}
+
+.toggle-mode-button:hover {
+  color: #0056b3;
+}
+
+
+.login-container {
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.login-container:hover {
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+}
+
+.login-button {
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+.alt-login-button {
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  width: 100%;
+  display: block;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  text-decoration: none;
+}
+
+.alt-login-button:hover {
+  transform: translateY(-3px);
+}
+
+
+/* Login Page Container */
+.Loginpage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+  flex-direction: column;
+}
+
+/* Logged In State */
+.loggedIn {
+  text-align: center;
+}
+
+/* Login Form */
+.login-form {
+  max-width: 400px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Header */
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Form Fields */
+.login-form .field {
+  margin-bottom: 15px;
+}
+
+/* Alternative Login Options */
+.alt-login-options {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Divider Line */
+.alt-login-divider {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #ccc;
+}
+
+/* Social Media Buttons */
+.alt-login-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Google Button */
+.alt-login-button.google {
+  background-color: #4285f4;
+}
+
+/* Facebook Button */
+.alt-login-button.facebook {
+  background-color: #3b5998;
+}
+
+/* Apple Button */
+.alt-login-button.apple {
+  background-color: #000;
+}
+
+/* Mobile Button */
+.alt-login-button.mobile {
+  background-color: #000;
+}
+
+/* Toggle Mode Button */
+.toggle-mode-button {
+  text-align: center;
+  margin-top: 10px;
+  cursor: pointer;
+  color: #007bff;
+}
+
+/* Login Page Container */
+.Loginpage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+  flex-direction: column;
+}
+
+/* Logged In State */
+.loggedIn {
+  text-align: center;
+}
+
+/* Login Form */
+.login-form {
+  max-width: 400px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Header */
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Logo Container */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Logo Images */
+.logo {
+  width: 80px; /* Adjust the size as needed */
+  height: 80px; /* Adjust the size as needed */
+  margin-right: 10px; /* Adjust spacing between logos */
+}
