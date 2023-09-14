@@ -1,7 +1,12 @@
+import React from "react";
+import Userprofile from './components/userprofile/Userprofile'
 
 function App() {
   return (
-    <div>Hello World</div>
+    <div className="App">
+      <Userprofile />
+    </div>
+
   );
 }
 
