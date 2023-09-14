@@ -1,192 +1,152 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import './login-page.css';
-
-class Loginpage extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isLoggedIn: false,
-      isSignUpMode: false,
-      username: '',
-      password: '',
-      firstName: '',
-      lastName: '',
-      phoneNumber: '',
-      newPassword: '',
-      confirmPassword: '',
-    };
-  }
-
-  handleInputChange = (event) => {
+import { useDispatch, useSelector } from 'react-redux';
+import {useNavigate} from 'react-router-dom'
+import { useLoginMutation, useRegisterMutation } from '../features/usersApiSlice';
+import { setCredentials } from '../features/authSlice';
+import { toast } from 'react-toastify';
+const Loginpage =()=> {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const [login] = useLoginMutation();
+  const [register] = useRegisterMutation();
+  const {userInfo} = useSelector((state)=>state.auth)
+  const [state,setState] = useState({
+    email : '',
+    password : '',
+    name : '',
+    isSignUpMode: false,
+  })
+  // useEffect(()=>{
+  //   if(userInfo){
+  //     navigate('/')
+  //   }
+  // },[navigate,userInfo])
+  const handleInputChange = (event) => {
     const { name, value } = event.target;
-    this.setState({ [name]: value });
+    setState({ ...state,[name]: value });
   };
 
-  handleLogin = () => {
+  const handleLogin = async(e) => {
     // You can add authentication logic here
     // For simplicity, we'll just pretend it's successful
-    this.setState({ isLoggedIn: true });
+    e.preventDefault();
+    const email  = state.email
+    const pwd = state.password
+    try{
+      const res = await login({email,pwd}).unwrap();
+      dispatch(setCredentials({...res}))
+      toast.success("Logged In successfully")
+      navigate('/')
+    }catch(e){
+      toast.error(e?.data?.Error || e.error)
+    }
   };
 
-  handleLogout = () => {
-    this.setState({
-      isLoggedIn: false,
-      isSignUpMode: false,
-      username: '',
-      password: '',
-      firstName: '',
-      lastName: '',
-      phoneNumber: '',
-      newPassword: '',
-      confirmPassword: '',
-    });
-  };
 
-  handleToggleMode = () => {
-    this.setState((prevState) => ({
+  const handleToggleMode = () => {
+    setState((prevState) => ({
       isSignUpMode: !prevState.isSignUpMode,
     }));
   };
 
-  handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (this.state.isSignUpMode) {
-      // Handle sign up
-      // You can add your sign-up logic here
+    if (state.isSignUpMode) {
+      const email  = state.email
+      const pwd = state.password
+      const name = state.name
+      try{
+        const res = await register({email,pwd,name}).unwrap();
+        dispatch(setCredentials({...res}))
+        toast.success("Registered Successfully")
+        navigate('/')
+      } catch(e){
+        toast.error(e?.data?.error || e.error)
+      }
     } else {
-      // Handle sign in
-      // You can add your sign-in logic here
-      this.handleLogin();
+      handleLogin(event);
     }
-  };
-
-  render() {
+  }
     return (
-      <div className={`Loginpage ${this.state.isLoggedIn ? 'loggedIn' : ''}`}>
+      <div className={`Loginpage ${state.isLoggedIn ? 'loggedIn' : ''}`}>
         <div className="login-container">
-          {this.state.isLoggedIn ? (
-            <div className="logged-in">
-              <h2>Welcome, User!</h2>
-              <button onClick={this.handleLogout}>Logout</button>
-            </div>
-          ) : (
             <div className="login-form">
-              <h2>{this.state.isSignUpMode ? 'Sign Up' : 'Sign In'}</h2>
-              <form onSubmit={this.handleSubmit}>
-                {!this.state.isSignUpMode && (
-                  <div className="form-group">
-                    <label htmlFor="username">Username:</label>
-                    <input
-                      type="text"
-                      id="username"
-                      name="username"
-                      value={this.state.username}
-                      onChange={this.handleInputChange}
-                      required
-                      className="input-field"
-                    />
-                  </div>
-                )}
-                {!this.state.isSignUpMode && (
-                  <div className="form-group">
-                    <label htmlFor="password">Password:</label>
-                    <input
-                      type="password"
-                      id="password"
-                      name="password"
-                      value={this.state.password}
-                      onChange={this.handleInputChange}
-                      required
-                      className="input-field"
-                    />
-                  </div>
-                )}
-                {this.state.isSignUpMode && (
+              <h2>{state.isSignUpMode ? 'Sign Up' : 'Sign In'}</h2>
+              <form onSubmit={handleSubmit}>
+                {!state.isSignUpMode && (
                   <div className="form-group">
                     <label htmlFor="email">Email:</label>
                     <input
                       type="email"
                       id="email"
                       name="email"
-                      value={this.state.email}
-                      onChange={this.handleInputChange}
+                      value={state.email || ''}
+                      onChange={handleInputChange}
                       required
                       className="input-field"
                     />
                   </div>
                 )}
-                {this.state.isSignUpMode && (
+                {!state.isSignUpMode && (
                   <div className="form-group">
-                    <label htmlFor="firstName">First Name:</label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      value={this.state.firstName}
-                      onChange={this.handleInputChange}
-                      required
-                      className="input-field"
-                    />
-                  </div>
-                )}
-                {this.state.isSignUpMode && (
-                  <div className="form-group">
-                    <label htmlFor="lastName">Last Name:</label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      value={this.state.lastName}
-                      onChange={this.handleInputChange}
-                      required
-                      className="input-field"
-                    />
-                  </div>
-                )}
-                {this.state.isSignUpMode && (
-                  <div className="form-group">
-                    <label htmlFor="phoneNumber">Phone Number:</label>
-                    <input
-                      type="tel"
-                      id="phoneNumber"
-                      name="phoneNumber"
-                      value={this.state.phoneNumber}
-                      onChange={this.handleInputChange}
-                      required
-                      className="input-field"
-                    />
-                  </div>
-                )}
-                {this.state.isSignUpMode && (
-                  <div className="form-group">
-                    <label htmlFor="newPassword">New Password:</label>
+                    <label htmlFor="password">Password:</label>
                     <input
                       type="password"
-                      id="newPassword"
-                      name="newPassword"
-                      value={this.state.newPassword}
-                      onChange={this.handleInputChange}
+                      id="password"
+                      name="password"
+                      value={state.password}
+                      onChange={handleInputChange}
                       required
                       className="input-field"
                     />
                   </div>
                 )}
-                {this.state.isSignUpMode && (
+                {state.isSignUpMode && (
                   <div className="form-group">
-                    <label htmlFor="confirmPassword">Confirm Password:</label>
+                    <label htmlFor="email">Email:</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={state.email}
+                      onChange={handleInputChange}
+                      required
+                      className="input-field"
+                    />
+                  </div>
+                )}
+                {state.isSignUpMode && (
+                  <div className="form-group">
+                    <label htmlFor="firstName">Name:</label>
+                    <input
+                      type="text"
+                      id="Name"
+                      name="name"
+                      value={state.name}
+                      onChange={handleInputChange}
+                      required
+                      className="input-field"
+                    />
+                  </div>
+                )}
+                
+                {state.isSignUpMode && (
+                  <div className="form-group">
+                    <label htmlFor="newPassword">Password:</label>
                     <input
                       type="password"
-                      id="confirmPassword"
-                      name="confirmPassword"
-                      value={this.state.confirmPassword}
-                      onChange={this.handleInputChange}
+                      id="password"
+                      name="password"
+                      value={state.password}
+                      onChange={handleInputChange}
                       required
                       className="input-field"
                     />
                   </div>
                 )}
                 <button type="submit" className="login-button">
-                  {this.state.isSignUpMode ? 'Sign Up' : 'Sign In'}
+                  {state.isSignUpMode ? 'Sign Up' : 'Sign In'}
                 </button>
                 <div className="alt-login-options mt-6">
                   <hr className="alt-login-divider" />
@@ -219,17 +179,15 @@ class Loginpage extends Component {
                 <button
                   type="button"
                   className="toggle-mode-button"
-                  onClick={this.handleToggleMode}
+                  onClick={handleToggleMode}
                 >
-                  {this.state.isSignUpMode ? 'Sign In Instead' : 'Sign Up Instead'}
+                  {state.isSignUpMode ? 'Sign In Instead' : 'Sign Up Instead'}
                 </button>
               </form>
             </div>
-          )}
         </div>
       </div>
     );
-  }
 }
 
 export default Loginpage;

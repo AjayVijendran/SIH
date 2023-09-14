@@ -1,11 +1,18 @@
 import Loginpage from "./components/login-page";
 import React from 'react';
-import './components/login-page.css';
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import Home from "./components/home";
+import {ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 function App() {
     return (
-        <div className="app-container">
-            <Loginpage/>
-        </div> 
+        <BrowserRouter>
+            <ToastContainer position="top-center"/>
+            <Routes>
+                <Route path="/auth" element={<Loginpage/>}></Route>
+                <Route path="/" element={<Home/>}></Route>
+            </Routes>
+        </BrowserRouter>
       
     );
   }
