@@ -1,13 +1,12 @@
-import Loginpage from "./components/login-page";
+// import Loginpage from "./components/login-page";
 import React from 'react';
-import './components/login-page.css';
+import LandingPage from './components/LandingPage';
 function App() {
     return (
-        <div className="app-container">
-            <Loginpage/>
-        </div> 
+        // <div className="app-container">
+            <LandingPage />
+        //</div> 
       
     );
   }
-  
 export default App;

@@ -1,20 +1,16 @@
-/* App.css */
+/* body{
+margin: 0;
+padding: 0;
+}
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
-body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f0f0f0;
-  }
-  
-  .app-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f0f0f0;
-  }
-  
+.app-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  object-fit: cover;
+} */
