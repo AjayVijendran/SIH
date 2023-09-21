@@ -1,6 +1,6 @@
 import Loginpage from "./components/login-page";
 import Userprofile from './components/userprofile/Userprofile'
-
+import LandingPage from "./components/LandingPage";
 import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Home from "./components/home";
@@ -12,6 +12,7 @@ function App() {
         <BrowserRouter>
             <ToastContainer position="top-center"/>
             <Routes>
+                <Route path = "/landing" element = {<LandingPage />}></Route>
                 <Route path="/auth" element={<Loginpage/>}></Route>
                 <Route path="" element={<PrivateRoute/>}>
                     <Route path="/home" element={<Home/>}></Route>

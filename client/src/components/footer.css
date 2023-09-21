@@ -1,0 +1,32 @@
+/* Footer Styles */
+.footer {
+    position: relative;
+    z-index: 2;
+    background-color: rgba(45, 45, 45);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    transition: background-color 0.3s, transform 0.3s;
+    justify-content: space-between;
+  }
+  
+  .footer-options ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+  }
+  
+  .footer-options ul li {
+    margin: 0 20px;
+  }
+  
+  .footer-options ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: color 0.3s;
+  }
+  
+  .footer-options ul li a:hover {
+    color: #ff5733;
+  }
+  
