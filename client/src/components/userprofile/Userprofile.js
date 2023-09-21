@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import './userprofile.css'
 import defaultPic from './defaultpic.png'; // Import your default profile picture
-
+import { useDispatch, useSelector } from 'react-redux';
+import { useUpdateMutation } from '../../features/usersApiSlice';
+import { setCredentials } from '../../features/authSlice';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router';
 function Userprofile() {
   // Sample user data (you'd typically fetch this from an API)
+  const {userInfo} = useSelector((state)=>state.auth)
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [update] = useUpdateMutation();
   const [user, setUser] = useState({
-    id: 1,
-    username: 'fardeen_khan',
-    fullName: 'Fardeen Khan',
-    email: 'gamefardeen@gmail.com',
-    avatarUrl: null,
-    address: null,
-    contact: null,
+    ...userInfo
   });
 
   const [isEditing, setIsEditing] = useState(false); // Track edit mode
@@ -21,7 +23,23 @@ function Userprofile() {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
-
+  const handleClick = async (event) =>{
+    event.preventDefault();
+    if(isEditing){
+      try {
+        const res = await update(user).unwrap();
+        dispatch(setCredentials({...res}));
+        toast.success("Data Updated and saved")
+      } catch (e) {
+        setUser({...userInfo})
+        toast.error(e?.data?.Error || e.Error)
+        if (e.status ===401){
+            navigate('/auth')
+        }
+      }
+    }
+    setIsEditing(!isEditing)
+  }
   // Handle avatar upload
   const handleAvatarUpload = (e) => {
     const file = e.target.files[0];
@@ -55,8 +73,8 @@ function Userprofile() {
           canvas.height = height;
   
           ctx.drawImage(img, 0, 0, width, height);
-          const resizedImageUrl = canvas.toDataURL('image/jpeg', 0.8);
-          setUser({ ...user, avatarUrl: resizedImageUrl });
+          const resizedImageUrl = canvas.toDataURL('image/jpeg', 1.0);
+          setUser({ ...user, avatarURL: resizedImageUrl });
         };
       };
   
@@ -65,9 +83,9 @@ function Userprofile() {
   };
 
   return (
-      <>
+      <div className='container'>
       <div className="profile-header">
-        <img className='profile-avatar' src={user.avatarUrl || defaultPic} 
+        <img className='profile-avatar' src={user.avatarURL || defaultPic} 
         alt="User Avatar"/>   
 
         {isEditing && (
@@ -88,17 +106,17 @@ function Userprofile() {
           {isEditing ? (
             <input
               type="text"
-              name="fullName"
-              value={user.fullName}
+              name="name"
+              value={user.name}
               onChange={handleFieldChange}
               className='input-field'
             />
           ) : (
-            user.fullName
+            user.name
           )}
         </h1>
         <p>
-        @{user.username}
+        ID : {user._id}
         </p>
       </div>
       <div className="user-profile">
@@ -119,9 +137,10 @@ function Userprofile() {
         </p>
         <p>
           Address: {isEditing ? (
-            <input
+            <textarea
               type="text"
               name="address"
+              id='address'
               value={user.address}
               onChange={handleFieldChange}
               className='input-field'
@@ -144,13 +163,13 @@ function Userprofile() {
           )}
         </p>
       </div>
-      <button className={isEditing ? 'save-button' : 'edit-button'} onClick={() => setIsEditing(!isEditing)}>
+      <button className={isEditing ? 'save-button' : 'edit-button'} onClick={handleClick}>
   {isEditing ? 'Save' : 'Edit'}
 </button>
 
     </div>
     
-    </>
+    </div>
   );
 }
 

@@ -3,6 +3,7 @@
 const asyncHandler = require('express-async-handler')
 const User = require("../models/User")
 const token = require("../utils/generateToken")
+const jwt = require("jsonwebtoken")
 const getData = asyncHandler(async (req,res)=>{
     try{
         const {id} = req.body
@@ -65,10 +66,10 @@ const login = asyncHandler( async (req,res)=>{
     }
 })
 const updateUser = asyncHandler(async(req,res)=>{
-    const {_id,name} = req.body
+    const {_id} =req.body
     const userexists = await User.findById({_id})
     if(userexists){
-        userexists.name = name || userexists.name
+        Object.assign(userexists,req.body)
         const updatedUser = await userexists.save()
         res.status(200)
         res.json(updatedUser)
@@ -78,10 +79,29 @@ const updateUser = asyncHandler(async(req,res)=>{
         res.json({"Error":"Invalid Emailid or Pwd"})
     }
 })
+const isauth = asyncHandler(async (req,res)=>{
+    let toke;
+    toke = req.cookies.jwt;
+    if (toke){
+        try{
+            const decoded = jwt.verify(toke,process.env.JWT_SECRET);
+            const user = await User.findById(decoded.userID).select('-pwd');
+            res.status(200).json(user)
+        }catch(e){
+            res.status(401).json({"Error":"Not authorised,Invalid token"})
+        }
+        finally{
+        }
+    }
+    else{
+        res.status(401).json({"Error":"Not authorised,No token"})
+    }
+})
 module.exports = {
     getData,
     register,
     logout,
     login,
-    updateUser
+    updateUser,
+    isauth
 }
