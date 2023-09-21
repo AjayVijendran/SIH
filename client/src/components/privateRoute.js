@@ -3,6 +3,7 @@ import { useIsauthMutation} from "../features/usersApiSlice";
 import { useDispatch, useSelector} from "react-redux";
 import { clearCredentials, setCredentials } from "../features/authSlice";
 import { useEffect,useState } from "react";
+import Loader from "./loader/Loader";
 const PrivateRoute =  () =>{
     const [isauth] = useIsauthMutation();
     const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const PrivateRoute =  () =>{
     },[isauth,dispatch,userInfo])
         
     if (isLoading){
-        return <div>Wait bruh</div>
+        return <Loader />
     }
     else if(userInfo){
         return <Outlet/>
