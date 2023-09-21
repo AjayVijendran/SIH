@@ -13,11 +13,9 @@
 3. To run the front-end or client-side , run the following commands
     1. `cd client`
     2. `npm start`
-4. To run the server , perform the following actions:
-    1. `cd server`
-    2. Copy the `.env.example` file into a new `.env` file , for example if you are using command prompt :
-        1. `copy .env.example .env`
-    3. Start the server by running `npm run start`
+4. The server is deployed on AWS Lambda and accessed with the help of AWS API Gateway.
+5. If you make any changes to the server make sure you run the follwoing command to deploy the updated server
+    1. `npm run deploy`
 
-# Now server will be running in `localhost:3001` and client will be running in `localhost:3000`
+## Now client will be running in `localhost:3000`
 
