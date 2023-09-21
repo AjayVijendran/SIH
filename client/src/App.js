@@ -12,7 +12,7 @@ function App() {
         <BrowserRouter>
             <ToastContainer position="top-center"/>
             <Routes>
-                <Route path = "/landing" element = {<LandingPage />}></Route>
+                <Route path = "/" element = {<LandingPage />}></Route>
                 <Route path="/auth" element={<Loginpage/>}></Route>
                 <Route path="" element={<PrivateRoute/>}>
                     <Route path="/home" element={<Home/>}></Route>

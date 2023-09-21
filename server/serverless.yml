@@ -1,0 +1,19 @@
+service: PrashnaAIServer
+frameworkVersion: "3"
+provider:
+  name: aws
+  runtime: nodejs18.x
+  memorySize : 2048
+  stage: dev
+  region: ap-south-1
+functions:
+  hello:
+    handler: handler.hello
+    events:
+     - http: ANY /{proxy+}
+     - http: ANY /
+    environment:
+      PORT: 3001
+      conn: "mongodb+srv://ajay:RbnvVSVJh6c6NuVl@cluster0.aypzsin.mongodb.net/details?retryWrites=true&w=majority"
+      JWT_SECRET: "abcsecret1234"
+      NODE_ENV: 'Development'
