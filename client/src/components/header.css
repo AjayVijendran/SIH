@@ -48,4 +48,8 @@
     color: #00ffbb;
     transform: scale(1.05);
   }
+
+  ul li a {
+    cursor: pointer;
+  }
   
