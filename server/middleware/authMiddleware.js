@@ -4,6 +4,7 @@ const user = require("../models/User")
 const protect = asyncHandler(async (req,res,next)=>{
     let token;
     token = req.cookies.jwt;
+    const head = req.headers.vfkey
     if (token){
         try{
             const decoded = jwt.verify(token,process.env.JWT_SECRET);
@@ -13,6 +14,9 @@ const protect = asyncHandler(async (req,res,next)=>{
         }catch(e){
             res.status(401).json({"Error":"Not authorised,Invalid token"})
         }
+    }
+    else if(head===process.env.vfapikey){
+        next();
     }
     else{
         res.status(401).json({"Error":"Not authorised,No token,Please Login Again"})
