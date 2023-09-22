@@ -6,7 +6,7 @@ const token = require("../utils/generateToken")
 const jwt = require("jsonwebtoken")
 const getData = asyncHandler(async (req,res)=>{
     try{
-        const {id} = req.body
+        const {id} = req.headers
         const user = await User.findById(id)
         if(!user){
             res.status(404).json({"error":"No data with the given id"})
@@ -15,7 +15,7 @@ const getData = asyncHandler(async (req,res)=>{
             res.json(user)
         }
     } catch(e){
-        res.status(404).json({"error":"No data with the given id"})
+        res.status(404).json({"error":"There is No data with the given id"})
     }
 })
 //Registering new user
