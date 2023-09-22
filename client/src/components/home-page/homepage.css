@@ -1,0 +1,106 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 8vh;
+  }
+
+  .home-page {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontally center content */
+  }
+  
+.header_sec{
+    position: relative;
+    margin-top: 0;
+}
+
+.hero-section {
+    position: fixed;
+    background: url('../background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    z-index: 1;
+    overflow: hidden;
+    min-height: calc(100vh - 10%); /* Adjusted to account for top: 10% */
+    width: 100%; /* Add this line to ensure the width fills the viewport */
+  }
+  
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .hero-content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+  
+  .hero-content p {
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+  
+.hero-image-section .hero-image {
+  margin-top: 5px;
+  max-width: 70%; /* Reduce the maximum width to 70% of its parent container */
+  height: auto; /* Maintain aspect ratio and prevent distortion */
+  display: block;
+  opacity: 0.7;
+  margin-left: 10px; /* Left margin of 10px */
+  margin-right: auto; /* Center horizontally */
+  position: fixed; /* Position fixed for centering */
+  top: 50%; /* Move the image down by 50% of the viewport height */
+  transform: translateY(-50%); /* Center vertically */
+}
+
+  
+  
+  
+  
+  .sign-in-up-button {
+    position: absolute;
+    top: 10px; /* Adjust the top position as needed */
+    right: 0px; /* Adjust the right position as needed */
+  }
+  
+  .sign-in-up-button {
+    background-color: #ff5733;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-right: 20px;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .sign-in-up-button:hover {
+    background-color: #75a99c;
+    transform: scale(1.05);
+  }
+  
+  .cta-content {
+    opacity: 0; /* Initially hidden */
+    height: 0; /* Initially no height */
+    overflow: hidden; /* Hide overflowing content */
+    transition: opacity 0.5s, height 0.5s; /* Smooth transition for opacity and height */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+  }
+  
+  .cta-content p{
+    text-align: left;
+    justify-content: left;
+    margin-left: 50px;
+  }
+  
+  .cta-content.active {
+    opacity: 1; /* Visible */
+    height: auto; /* Auto height to reveal content */
+  }
