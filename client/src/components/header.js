@@ -1,6 +1,6 @@
 import React from 'react';
 import './header.css'
-function Header() {
+function Header({ buttonText }) {
   return (
     <header className="navbar">
       {/* Navigation Menu */}
@@ -12,7 +12,7 @@ function Header() {
         </ul>
       </nav>
       {/* Sign In / Sign Up Button */}
-      <button className="sign-in-up-button">Sign In / Sign Up</button>
+      <button className="sign-in-up-button">{buttonText}</button>
     </header>
   );
 }
