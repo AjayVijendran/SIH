@@ -18,7 +18,5 @@ if(process.env.NODE_ENV!=='production'){
     require('dotenv').config()
 }
 initdb()
-PORT=process.env.PORT || 3001
-app.listen(PORT,()=>{
-    console.log("Listening in PORT "+PORT)
-})
+
+module.exports = app

@@ -12,6 +12,9 @@ const userSchema  = new mongoose.Schema({
         required : true
     },
     name : String,
+    address : {type: String, default : null},
+    contact : {type : String,default : null},
+    avatarURL : {type : String,default:null},
     userID : String
 })
 

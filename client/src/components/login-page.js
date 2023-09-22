@@ -17,11 +17,11 @@ const Loginpage =()=> {
     name : '',
     isSignUpMode: false,
   })
-  // useEffect(()=>{
-  //   if(userInfo){
-  //     navigate('/')
-  //   }
-  // },[navigate,userInfo])
+  useEffect(()=>{
+    if(userInfo){
+      navigate('/home')
+    }
+  },[navigate,userInfo])
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setState({ ...state,[name]: value });
@@ -37,7 +37,7 @@ const Loginpage =()=> {
       const res = await login({email,pwd}).unwrap();
       dispatch(setCredentials({...res}))
       toast.success("Logged In successfully")
-      navigate('/')
+      navigate('/home')
     }catch(e){
       toast.error(e?.data?.Error || e.error)
     }
@@ -60,7 +60,7 @@ const Loginpage =()=> {
         const res = await register({email,pwd,name}).unwrap();
         dispatch(setCredentials({...res}))
         toast.success("Registered Successfully")
-        navigate('/')
+        navigate('/home')
       } catch(e){
         toast.error(e?.data?.error || e.error)
       }
@@ -148,32 +148,15 @@ const Loginpage =()=> {
                 <button type="submit" className="login-button">
                   {state.isSignUpMode ? 'Sign Up' : 'Sign In'}
                 </button>
-                <div className="alt-login-options mt-6">
-                  <hr className="alt-login-divider" />
+                <hr className="alt-login-divider" />
+                <div className="alt-login-options ">
+        
                   <p>Or continue with:</p>
                   <a
                     href="https://accounts.google.com/login"
                     className="alt-login-button google"
                   >
                     Continue with Google
-                  </a>
-                  <a
-                    href="https://www.facebook.com/login" // Replace with actual Facebook login URL
-                    className="alt-login-button facebook"
-                  >
-                    Continue with Facebook
-                  </a>
-                  <a
-                    href="https://www.apple.com/sign-in" // Replace with actual Apple login URL
-                    className="alt-login-button apple"
-                  >
-                    Continue with Apple
-                  </a>
-                  <a
-                    href="https://www.example.com/mobile-login" // Replace with actual mobile login URL
-                    className="alt-login-button mobile"
-                  >
-                    Continue with Mobile Number
                   </a>
                 </div>
                 <button

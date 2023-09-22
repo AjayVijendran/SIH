@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import './LandingPage.css'; // Import your CSS file for the landing page
 import logo from './logo.png';
 import Footer from './footer';
+import { useNavigate } from 'react-router';
 
 function LandingPage() {
   const [showContent, setShowContent] = useState(false);
-
+  const navigate = useNavigate();
+  const redirectToLogin = () =>{
+    navigate('/auth')
+  }
   const toggleContent = () => {
     setShowContent(!showContent);
   };
@@ -14,9 +18,9 @@ function LandingPage() {
     <div className="landing-page">
       {/* Hero Section */}
       <section className="hero-section">
-        <button className="sign-in-up-button">Sign In / Sign Up</button>
+        <button className="sign-in-up-button" onClick={redirectToLogin}>Sign In / Sign Up</button>
         <div className="hero-image-section">
-          <img src={logo} alt="Hero Image" className="hero-image" />
+          <img src={logo} alt="Hero" className="hero-image" />
         </div>
         <button className="cta-button" onClick={toggleContent}>
           Learn More

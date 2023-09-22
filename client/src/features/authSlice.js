@@ -1,7 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
-   userInfo : null
+   userInfo : null,
+
 }
 
 const authSlice = createSlice({
@@ -14,7 +15,8 @@ const authSlice = createSlice({
         clearCredentials : (state,action)=>{
             state.userInfo = null
         }
-    }
+    },
+    
 })
 export const {setCredentials,clearCredentials} = authSlice.actions
 export default authSlice.reducer
