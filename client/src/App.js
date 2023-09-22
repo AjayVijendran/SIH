@@ -7,6 +7,7 @@ import Home from "./components/home";
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import PrivateRoute from "./components/privateRoute";
+import { MyChat } from "./components/chat";
 function App() {
     return (
         <BrowserRouter>
@@ -15,7 +16,7 @@ function App() {
                 <Route path = "/" element = {<LandingPage />}></Route>
                 <Route path="/auth" element={<Loginpage/>}></Route>
                 <Route path="" element={<PrivateRoute/>}>
-                    <Route path="/home" element={<Home/>}></Route>
+                    <Route path="/home" element={<><Home/><MyChat/></>}></Route>
                     <Route path="/profile" element={<Userprofile/>}></Route>
                 </Route>
                 

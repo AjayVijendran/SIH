@@ -17,11 +17,11 @@ const Loginpage =()=> {
     name : '',
     isSignUpMode: false,
   })
-  useEffect(()=>{
-    if(userInfo){
-      navigate('/home')
-    }
-  },[navigate,userInfo])
+  // useEffect(()=>{
+  //   if(userInfo){
+  //     navigate('/home')
+  //   }
+  // },[navigate,userInfo])
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setState({ ...state,[name]: value });
