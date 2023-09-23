@@ -3,11 +3,11 @@ import './homepage.css'; // Import your CSS file for the landing page
 import logo from '../logo.png';
 import Header from '../header';
 import Footer from '../footer.js'
+import { MyChat } from '../chat';
 function Homepage() {
-    const buttonText = 'My Profile';
   return (
     <div className="home-page">
-        <Header buttonText={buttonText} />
+        <Header/>
       <section className="hero-section">
         {/* <button className="sign-in-up-button">Sign In / Sign Up</button> */}
         <div className="hero-image-section">

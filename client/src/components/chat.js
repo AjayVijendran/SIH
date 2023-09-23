@@ -6,14 +6,13 @@ import { match } from 'ts-pattern';
 const IMAGE = 'https://picsum.photos/seed/1/200/300';
 const AVATAR = 'https://picsum.photos/seed/1/80/80';
 
-export const MyChat = () => {
+export const MyChat  = () => {
   const [open, setOpen] = useState(false);
   const {userInfo} = useSelector((state)=>state.auth)
   const runtime = useRuntime({
     verify: { authorization: 'VF.DM.6505804c7ba84f0007566a8d.1kL8eoWqPX1OZJ3h' },
     session: { userID: `${userInfo._id}` },
   });
-
   const handleLaunch = async () => {
     setOpen(true);
     await runtime.launch();
@@ -30,7 +29,7 @@ export const MyChat = () => {
         style={{
           position: 'absolute',
           right: '2rem',
-          bottom: '2rem',
+          bottom: '4rem',
         }}
       >
         <Launcher onClick={handleLaunch} />
@@ -43,7 +42,7 @@ export const MyChat = () => {
       style={{
         position: 'absolute',
         right: '1rem',
-        top: '3rem',
+        top: '3.5rem',
         bottom: '3rem',
         width: '400px',
         border: '1px solid #ddd',

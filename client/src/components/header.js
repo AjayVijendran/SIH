@@ -1,6 +1,11 @@
 import React from 'react';
 import './header.css'
+import { useNavigate } from 'react-router';
 function Header({ buttonText }) {
+  const profile =()=>{
+    nav('/profile')
+  }
+  const nav = useNavigate();
   return (
     <header className="navbar">
       {/* Navigation Menu */}
@@ -12,7 +17,7 @@ function Header({ buttonText }) {
         </ul>
       </nav>
       {/* Sign In / Sign Up Button */}
-      <button className="sign-in-up-button">{buttonText}</button>
+      <button className="sign-in-up-button" onClick={profile}>My Profile</button>
     </header>
   );
 }
