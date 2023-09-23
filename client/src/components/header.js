@@ -38,7 +38,7 @@ function Header({ buttonText }) {
         </ul>
       </nav>    
       {/* Sign In / Sign Up Button */}
-      <button className="sign-in-up-button" onClick={redirectToProfile}>{buttonText}</button>
+      <button className="sign-in-up-button" onClick={redirectToProfile}>My Profile</button>
       <button className="logout-button" onClick={signout}>Logout</button>
     </header>
   );
