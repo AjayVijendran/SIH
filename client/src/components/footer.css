@@ -31,4 +31,7 @@
   .footer-options ul li a:hover {
     color: #ff5733;
   }
+  ul li a {
+    cursor: pointer;
+  }
   

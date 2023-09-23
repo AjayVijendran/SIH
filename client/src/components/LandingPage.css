@@ -1,10 +1,11 @@
-/* Landing Page Styles */
 html, body {
   margin: 0;
   padding: 0;
+  /* overflow: hidden; Prevent browser scrollbars */
 }
 
-#root {
+/* Add this for the content to fill the space */
+#root { /* Replace 'root' with the actual ID or class of your content container */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -18,7 +19,8 @@ html, body {
   position: relative;
 }
 
-.hero-section {
+
+.hero1-section {
   position: relative;
   background: url('./background.jpg') no-repeat center center fixed;
   background-size: cover;
@@ -26,24 +28,25 @@ html, body {
   z-index: 1;
   padding: 100px 0;
   overflow: hidden;
+  
 }
 
-.hero-content {
+.hero1-content {
   max-width: 800px;
   margin: 0 auto;
 }
 
-.hero-content h1 {
+.hero1-content h1 {
   font-size: 48px;
   margin-bottom: 20px;
 }
 
-.hero-content p {
+.hero1-content p {
   font-size: 24px;
   margin-bottom: 40px;
 }
 
-.cta-button {
+.cta1-button {
   background-color: #ff5733;
   color: white;
   margin-top: 110px;
@@ -58,11 +61,12 @@ html, body {
   transition: background-color 0.3s, transform 0.3s;
 }
 
-.cta-button:hover {
+
+.cta1-button:hover {
   background-color: #63a27d;
   transform: scale(1.05);
 }
-.hero-image-section .hero-image {
+.hero1-image-section .hero1-image {
   margin-top: 5px;
   width: 800px; /* Set the desired width */
   height: 300px; /* Set the desired height */
@@ -72,13 +76,13 @@ html, body {
   margin-right: auto;
 }
 
-.sign-in-up-button {
+.sign1-in-up-button {
   position: absolute;
   top: 10px; /* Adjust the top position as needed */
   right: 0px; /* Adjust the right position as needed */
 }
 
-.sign-in-up-button {
+.sign1-in-up-button {
   background-color: #ff5733;
   color: white;
   border: none;
@@ -90,12 +94,11 @@ html, body {
   transition: background-color 0.3s, transform 0.3s;
 }
 
-.sign-in-up-button:hover {
+.sign1-in-up-button:hover {
   background-color: #75a99c;
   transform: scale(1.05);
 }
-
-.cta-content {
+.cta1-content {
   opacity: 0; /* Initially hidden */
   max-height: 0; /* Initially no height */
   overflow: hidden; /* Hide overflowing content */
@@ -104,13 +107,13 @@ html, body {
   font-size: x-large;
 }
 
-.cta-content p{
+.cta1-content p{
   text-align: left;
   justify-content: left;
   margin-left: 50px;
 }
 
-.cta-content.active {
+.cta1-content.active {
   opacity: 1; /* Visible */
   max-height: 100%;
 }

@@ -1,0 +1,69 @@
+.contact-content {
+    margin: 20px; 
+    padding: 45px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif; 
+    /* align-items: flex-start; */
+    font-size: 16px; 
+    line-height: 1.5; 
+  }
+  
+  .contact-content h2 {
+    font-size: 24px; 
+    margin-bottom: 10px; 
+    color: #333; 
+  }
+  
+  .contact-content p {
+    margin-bottom: 15px; 
+    color: #666; 
+    font-size: 20px;
+  }
+  /* Apply this CSS to style the contact table */
+.contact-table {
+    margin-top: 34px;
+    margin-bottom: 20px;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .contact-table th, .contact-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .contact-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+
+  .tc-content {
+    margin: 20px; 
+    padding: 45px;
+    /* text-align: center; */
+    font-family: 'Roboto', sans-serif; 
+    /* align-items: flex-start; */
+    font-size: 16px; 
+    line-height: 1.5; 
+  }
+  
+  .tc-content h2 {
+    font-size: 24px; 
+    margin-bottom: 10px; 
+    color: #333; 
+  }
+  
+  .tc-content p {
+    margin-bottom: 15px; 
+    color: #666; 
+    font-size: 20px;
+  }
+
+  .tc-content p b {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  
+  

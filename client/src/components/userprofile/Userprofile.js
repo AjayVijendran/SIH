@@ -40,6 +40,10 @@ function Userprofile() {
     }
     setIsEditing(!isEditing)
   }
+
+  const navigateHome = () => {
+    navigate('/home')
+  }
   // Handle avatar upload
   const handleAvatarUpload = (e) => {
     const file = e.target.files[0];
@@ -166,6 +170,7 @@ function Userprofile() {
       <button className={isEditing ? 'save-button' : 'edit-button'} onClick={handleClick}>
   {isEditing ? 'Save' : 'Edit'}
 </button>
+      <button className='edit-button' onClick={navigateHome}>Back</button>
 
     </div>
     
