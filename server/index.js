@@ -8,7 +8,7 @@ const {router} = require("./routes/userRoutes")
 const {issuerouter} = require("./routes/issueRoutes")
 const app = express()
 
-app.use(cors({credentials:true,origin:'http://localhost:3000'}))
+app.use(cors({credentials:true,origin:'http://prashnaai.s3-website.ap-south-1.amazonaws.com'}))
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())

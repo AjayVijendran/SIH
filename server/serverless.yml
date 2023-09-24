@@ -13,7 +13,6 @@ functions:
      - http: ANY /{proxy+}
      - http: ANY /
     environment:
-      PORT: 3001
       conn: "mongodb+srv://ajay:RbnvVSVJh6c6NuVl@cluster0.aypzsin.mongodb.net/details?retryWrites=true&w=majority"
       JWT_SECRET: "abcsecret1234"
       NODE_ENV: 'Development'
